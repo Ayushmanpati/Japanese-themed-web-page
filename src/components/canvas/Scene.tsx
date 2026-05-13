@@ -220,12 +220,20 @@ export default function Scene({ hasEntered, zoroMode = false }: { hasEntered: bo
       {/* Magical glowing dust */}
       <Sparkles count={isMobile ? 50 : 200} scale={[20, 10, 60]} position={[0, 2, -15]} size={2} speed={0.4} color={zoroMode ? "#50e38d" : "#EADBC8"} opacity={0.3} />
 
-      <EffectComposer multisampling={isMobile ? 0 : 2}>
-        {!isMobile ? <DepthOfField focusDistance={0.02} focalLength={0.1} bokehScale={3} height={480} /> : null}
-        <Bloom luminanceThreshold={0.5} mipmapBlur intensity={hasEntered ? 1.0 : 3.0} />
-        <Noise opacity={0.03} />
-        <Vignette eskil={false} offset={0.1} darkness={1.1} />
-      </EffectComposer>
+      {isMobile ? (
+        <EffectComposer multisampling={0}>
+          <Bloom luminanceThreshold={0.5} mipmapBlur intensity={hasEntered ? 1.0 : 3.0} />
+          <Noise opacity={0.03} />
+          <Vignette eskil={false} offset={0.1} darkness={1.1} />
+        </EffectComposer>
+      ) : (
+        <EffectComposer multisampling={2}>
+          <DepthOfField focusDistance={0.02} focalLength={0.1} bokehScale={3} height={480} />
+          <Bloom luminanceThreshold={0.5} mipmapBlur intensity={hasEntered ? 1.0 : 3.0} />
+          <Noise opacity={0.03} />
+          <Vignette eskil={false} offset={0.1} darkness={1.1} />
+        </EffectComposer>
+      )}
     </>
   )
 }
