@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-sakura-pink: #F7C6D0;
+  --color-cream-white: #FFF7F2;
+  --color-warm-beige: #EADBC8;
+  --color-deep-brown: #4A3B36;
+  --color-midnight-blue: #1C2333;
+  --font-japanese: 'Noto Serif JP', serif;
+  --font-handwritten: 'Caveat', cursive;
+}
+
+:root {
+  background-color: var(--color-midnight-blue);
+  color: var(--color-cream-white);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis smooth scroll recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Selection */
+::selection {
+  background: rgba(247, 198, 208, 0.3); /* sakura-pink transparent */
+  color: #FFF7F2;
+}
